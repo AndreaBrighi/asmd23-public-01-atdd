@@ -17,3 +17,8 @@ Feature:  Adding numbers with a Calculator
     Given I have a Calculator
     When I add -1 and -1
     Then the sum should be -2
+
+  Scenario:  Add two decimal numbers
+    Given I have a Calculator
+    When I add 1.5 and 1.5
+    Then the sum should be 3.0

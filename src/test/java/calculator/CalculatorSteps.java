@@ -11,17 +11,21 @@ public class CalculatorSteps {
         this.calculator = new Calculator();
     }
 
-    @When("I add {int} and {int}")
-    public void iAddAnd(int arg0, int arg1) {
+    @When("I add {double} and {double}")
+    public void iAddAnd(double arg0, double arg1) {
         this.calculator.enter(arg0);
         this.calculator.enter(arg1);
     }
 
-    @Then("the sum should be {int}")
-    public void theSumShouldBe(int arg0) {
+    @Then("the sum should be {double}")
+    public void theSumShouldBe(double arg0) {
         this.calculator.add();
-        if (arg0 != this.calculator.getResult()) { // or using Junit's asserts
+        if (!equalsWithTolerance(arg0, this.calculator.getResult(), 0.0001)) { // or using Junit's asserts
             throw new IllegalStateException();
         }
+    }
+
+    private boolean equalsWithTolerance(double a, double b, double tolerance) {
+        return Math.abs(a - b) < tolerance;
     }
 }

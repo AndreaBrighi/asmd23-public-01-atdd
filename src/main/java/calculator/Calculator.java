@@ -3,9 +3,9 @@ package calculator;
 import java.util.*;
 
 public class Calculator {
-    private List<Integer> numbers = new LinkedList<>();
+    private final List<Double> numbers = new LinkedList<>();
 
-    public void enter(int i){
+    public void enter(double i){
         numbers.add(i);
         if (numbers.size() > 2){
             throw new IllegalStateException();
@@ -20,10 +20,10 @@ public class Calculator {
         numbers.remove(1);
     }
 
-    public int getResult(){
+    public double getResult(){
         if (numbers.size() != 1){
             throw new IllegalStateException();
         }
-        return numbers.get(0);
+        return numbers.getFirst();
     }
 }
