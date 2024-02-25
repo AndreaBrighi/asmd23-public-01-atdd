@@ -5,8 +5,11 @@ Feature:  Adding numbers with a Calculator
 
   Scenario Outline: Add two numbers
     Given I have a Calculator
-    When I add <arg0> and <arg1>
-    Then the sum should be <res>
+    When  I insert <arg0>
+    And I press +
+    And I insert <arg1>
+    And I press =
+    Then the result should be <res>
     Examples:
       | arg0 | arg1 | res |
       | 1    | 1    | 2   |
